@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<h1 align="center">图书馆管理系统</h1>
+<p>
+	<span>书名：</span>
+	<input type="text" placeholder='请输入书名' id="bookName">
+	<br/>
+	<span>作者：</span>
+	<input type="text" placeholder='请输入作者' id="bookAuthor">
+	<br/>
+	<span>价格：</span>
+	<input type="text" placeholder='请输入价格' id="bookPrice">
+	<br/>
+</p>
+<p>
+	<button id="selectBtn">查询所有书籍信息</button>
+	<button id="insertBtn">添加新书籍信息</button>
+</p>
+<hr/>
+<h3 align="center">删除书籍信息</h3>
+<p>
+	<span>要删除的书籍名称：</span>
+	<input type="text" placeholder='请输入要删除的书籍名称' id="deleteBookName">
+	<button id="deleteBtn">删除指定书籍信息</button>
+</p>
+<hr/>
+
+	<script>
+		var booklist =[];
+	    insertBtn.onclick = function(){
+		var bookName = document.getElementById('bookName').value
+		var bookAuthor = document.getElementById('bookAuthor').value
+		var bookPrice = document.getElementById('bookPrice').value
+		var book = {}
+		book.bookName = bookName
+		book.bookAuthor = bookAuthor
+		book.bookPrice = bookPrice
+		//把字典添加到列表中
+		booklist.push(book)
+	}
+	//查看所有图书
+	var selectBtn = document.getElementById('selectBtn')
+	selectBtn.onclick = function(){
+		for(var i in booklist){
+			console.log(booklist[i])
+		}
+	}
+	//删除功能：找到指定书名在列表中的那个字典中，获取这个字典在列表中的下标，最后从列表中删除这个字典
+	var deleteBtn = document.getElementById('deleteBtn')
+	deleteBtn.onclick = function(){
+		var deleteBookName = document.getElementById('deleteBookName').value
+		for(var i in booklist){
+			if(booklist[i]['bookName'] == deleteBookName){
+				console.log('下标是：'+i)
+				var arr = booklist.splice(i,1);
+				console.log(arr)
+			}
+		}
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘</title>
+    <style>
+        #list{
+            margin: 50px;
+            padding: 50px;
+            text-align: center;
+        }
+        #tz{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            border: 1px solid #000;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="tz">
+
+    </div>
+        <input type="text" id="serach_con" placeholder="请输入内容">
+        <button id="btn">百度一下</button>
+        <p id="tiancar"></p>
+        <div id="inc">please</div>
+
+    <script>
+        var tz = document.getElementById('tz');
+        var str = '<p class="more">查看</p><span class="con">span内容</span>';
+        tz.onclick = function (e){
+            if(e.target.className == 'more'){
+                console.log('查看111')
+            }
+            console.log(e)
+        }
+        tz.innerHTML = str
+
+        ///////////////////////////////////////////////////////
+
+        tz.onmousedown = function (e){
+            console.log('anxia');
+            var x = e.clientX - tz.offsetTop;
+            var y = e.clientY - tz.offsetLeft;
+            tz.onmousemove = function (e){
+                var clix = e.clientX;
+                var cliy = e.clientY;
+                console.log('x偏移：'+(clix-x)+';y偏移量：'+(cliy-y))
+                //偏移量作用在div
+                tz.style.top = (clix-x)+'px';
+                tz.style.left = (cliy-y)+'px'
+                console.log('yidong')
+            }
+        }
+        tz.onmouseup = function (){
+            console.log('taiqi')
+            tz.onmousemove = null;
+        }
+
+
+        var btn = document.getElementById('btn')
+        var search = document.getElementById('serach_con');
+        btn.onclick = function (){
+            var searchval = search.value;
+            console.log(searchval)
+        }
+
+        search.onkeydown = function (e){
+            var searchval = search.value;
+            if(e.code == 'Enter' ){
+                console.log('enter-----');
+            }
+        }
+
+        window.onload = function (){
+            search.focus();//光标闪烁
+        }
+        var arr = [{name:'孔万三'},{name:'孔仲景'}];
+        var tiancar = document.getElementById('tiancar')
+
+        //鼠标失去事件
+        search.onblur = function (){
+            var searchval = search.value;
+            var srt = ''
+            for(var i=0; i<arr.length; i++){
+                if(arr[i]['name'] == searchval){
+                    str = arr[i]['name']+'居然是个天才';
+                    tiancar.innerHTML = str;
+                    break;
+                }
+            }
+        }
+        // search.onblur = null //取消事件
+
+        //DOM2级事件
+        var inc = document.getElementById('inc');
+        inc.onclick = function (){
+            console.log('点击事件');
+        }
+        inc.onclick = null
+        inc.addEventListener('click',function (){
+            console.log('点击事件，DOM2绑定事件')
+        })
+        inc.addEventListener('click',otherclick);
+        function otherclick(){
+            console.log('DOM2级，另一个点击事件')
+        }
+        //取消DOM2事件
+        inc.removeEventListener('click',otherclick)
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

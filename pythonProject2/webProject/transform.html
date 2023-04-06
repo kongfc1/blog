@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>转换、过渡、动画</title>
+    <style>
+        .box{
+            width: 600px;
+            height: 400px;
+            margin-bottom: 20px;
+            border: 1px solid #000;
+            position: relative;
+        }
+        .tf{
+            width: 100px;
+            height: 100px;
+            border: 2px solid #000;
+            transform: translate(200px,300px);
+            transform: rotate(10deg);
+            transform: scale(0.7);
+            /*transform: skew();*/
+        }
+        .ts{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            transition: width 2s linear 0s;
+        }
+        .ts:hover{
+            width: 300px;
+            height: 200px;
+        }
+        .ta{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: cricle 5s linear 1s infinite;
+        }
+        @keyframes cricle {
+            from{
+                top:0;
+                left: 0;
+            }
+            25%{
+                top: 0;
+                left: 500px;
+            }
+            50%{
+                top:300px;
+                left: 500px;
+            }
+            75%{
+                top:300px;
+                left: 0;
+            }
+            100%{
+                top: 0;
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="tf"></div>
+    </div>
+
+    <div class="box">
+        <div class="ts"></div>
+    </div>
+
+    <div class="box">
+        <div class="ta"></div>
+    </div>
+
+</body>
+</html>

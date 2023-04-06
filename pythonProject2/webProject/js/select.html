@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三级联动</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .lbone{
+            width: 994px;
+            height: 460px;
+            margin: 10px auto;
+            position: relative;
+        }
+        .lbwrap{
+            position: relative;
+        }
+        .lbwrap .slide{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .lbwrap .slide img{
+            width: 994px;
+            height: 460px;
+        }
+        .lbcricle{
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+        }
+        .lbcricle span{
+            float: left;
+            margin-left: 10px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #92897C;
+            border:2px solid #B3ADA3;
+        }
+        .lbcricle span:hover{
+            background-color: #ffffff;
+        }
+        .lbcricle span.active{
+            background-color: #ffffff;
+        }
+        .prev{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 70px;
+            width: 42px;
+            transform: translateY(-35px);
+            background-image: url('../images/icon-slides.png');
+            background-repeat: no-repeat;
+            background-position: -84px 0;
+        }
+        .prev:hover{
+            background-position: 0px 0px;
+        }
+        .next{
+            position: absolute;
+            top:50%;
+            right: 0;
+            height: 70px;
+            width: 42px;
+            transform: translateY(-35px);
+            background-image: url('../images/icon-slides.png');
+            background-repeat: no-repeat;
+            background-position: -123px 0;
+        }
+        .next:hover{
+            background-position: -42px 0px;
+        }
+        #an4{
+            width: 300px;
+            height: 200px;
+            border: 1px solid#000000;
+            background-color: #cccccc;
+        }
+        #ani1{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+        .pic{
+            position:absolute;
+            top: 0;
+            left: 0;
+        }
+        #anim1{
+            width: 900px;
+            height: 300px;
+            border: 1px solid #000000;
+            margin: 10px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #anim1 img{
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        #anim1 img:nth-child(2){
+            left: 180px;
+        }
+        #anim1 img:nth-child(3){
+            left: 360px;
+        }
+        #anim1 img:nth-child(4){
+            left: 540px;
+        }
+        #anim1 img:nth-child(5){
+            left: 720px;
+        }
+        #aa1{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000000;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    生日
+    <div class="birth">
+        <select name="year" id="year">
+            <option value="">年份</option>
+        </select>
+        <select name="month" id="month">
+            <option value="">月份</option>
+        </select>
+        <select name="day" id="day">
+            <option value="">天数</option>
+        </select>
+    </div>
+    显示隐藏 淡入淡出
+    <div id="one">
+        <button id="show">显示</button>
+        <button id="hide">隐藏</button>
+        <button id="qieh">切换</button>
+        <button id="fTo">fadeTo</button>
+        <p id='two' style="border: 1px solid #000;width: 300px;height: 300px;background-color: #3F89EC">文字</p>
+    </div>
+    导航--切换
+    <div>
+        <ul class="list1">
+            <li><span>导航1</span>
+                <ul class="sub">
+                    <li>xuanxiang1</li>
+                    <li>xuanxiang2</li>
+                </ul>
+            </li>
+            <li><span>导航2</span>
+                <ul class="sub">
+                    <li>xuanxiang1</li>
+                    <li>xuanxiang2</li>
+                </ul>
+            </li>
+            <li><span>导航3</span>
+                <ul class="sub">
+                    <li>xuanxiang1</li>
+                    <li>xuanxiang2</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    stop方法
+    <div>
+        <button id="btn1">stop(false,false)</button>
+        <button id="btn2">stop(true,true)</button>
+        <button id="btn3">stop(false,true)</button>
+        <button id="btn4">stop(true,false)</button>
+        <button id="btn5">stop()</button>
+        <div id="three" style="position: absolute;top:600px;left:50px;width: 100px;height: 100px;border: 2px solid #000000"></div>
+    </div>
+    淡入淡出轮播
+    <div class="lbone">
+        <div class="lbwrap">
+            <div class="slide"><img src="../images/banner1.jpg" alt=""></div>
+            <div class="slide"><img src="../images/banner2.jpg" alt=""></div>
+            <div class="slide"><img src="../images/banner3.jpg" alt=""></div>
+            <div class="slide"><img src="../images/banner4.jpg" alt=""></div>
+        </div>
+        <div class="lbcricle">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="prev"></div>
+        <div class="next"></div>
+    </div>
+    animate动画
+    <div>
+        <button id="an1">一个属性</button>
+        <button id="an2">多个属性</button>
+        <button id="an3">队列</button>
+        <p id="an4"></p>
+    </div>
+    animate动画最小化
+    <div id="ani1">
+        <img src="../images/dota_box.png" alt="">
+        <img src="../images/dota_jian.png" alt="" class="pic">
+    </div>
+    多个元素同时动画
+    <div id="anim1">
+        <img src="../images/dw/0.jpg" alt="">
+        <img src="../images/dw/1.jpg" alt="">
+        <img src="../images/dw/2.jpg" alt="">
+        <img src="../images/dw/3.jpg" alt="">
+        <img src="../images/dw/4.jpg" alt="">
+    </div>
+    延时 delay
+    <div id="aa1"></div>
+
+</body>
+<script src="./jquery-1.12.3.min.js"></script>
+<!--年月日-->
+<script>
+    for(let i = 1989; i <= 2023; i++){
+       $('<option value='+i+'>'+i+'</option>').appendTo('#year')
+    }
+    $('#year').change(function (){
+        $("#month option:gt(0)").remove()
+        for(let i = 1; i <= 12; i++){
+            $("<option value="+i+">"+i+"</option>").appendTo('#month')
+        }
+    })
+    $('#month').change(function (){
+        $("#day option:gt(0)").remove()
+        var year = $('#year').val()
+        var month = $('#month').val()
+        var flag = 0
+        if(year%4==0&&year%100!=0||year%400==0){
+            flag = 1;
+        }else {
+            flag = 0;
+        }
+        if(month == 2){
+            if(flag){
+                for(let i = 1; i <= 29; i++){
+                    $("<option value="+i+">"+i+"</option>").appendTo('#day')
+                }
+            }else{
+                for(let i = 1; i <= 28; i++){
+                     $("<option value="+i+">"+i+"</option>").appendTo('#day')
+                }
+            }
+
+        }else if(month==4||month==6||month==9||month==11){
+            for(let i = 1; i <= 30; i++){
+               $("<option value="+i+">"+i+"</option>").appendTo('#day')
+            }
+        }else{
+            for(let i = 1; i <= 31; i++){
+               $("<option value="+i+">"+i+"</option>").appendTo('#day')
+            }
+        }
+    })
+
+
+</script>
+<!--显示隐藏 淡入淡出-->
+<script>
+    // $('#show').click(function (){
+    //     $('#two').show(10000)
+    // })
+    // $('#hide').click(function (){
+    //     $('#two').hide(10000)
+    // })
+    // $('#show').click(function (){
+    //     $('#two').slideDown(1500)
+    // })
+    // $('#hide').click(function (){
+    //     $('#two').slideUp(1500)
+    // })
+
+    $('#show').click(function (){
+        $('#two').fadeIn()
+    })
+    $('#hide').click(function (){
+        $('#two').fadeOut();
+    })
+    $('#qieh').click(function (){
+        $('#two').fadeToggle()
+    })
+    $('#fTo').click(function (){
+        $('#two').fadeTo('fast',0.5)
+    })
+
+</script>
+<!--切换-->
+<script>
+    $(".list1>li").click(function (){
+        $(this).find('.sub').slideToggle();
+    })
+</script>
+<!--stop方法-->
+<script>
+    var t = $('#three')
+    t.animate({
+        left:300
+    },1000)
+    t.animate({top:300},1000)
+    t.animate({left:50},1000)
+    t.animate({top:50},1000)
+    $('#btn1').click(function (){
+        t.stop(false,false)//不清空动画队列，不立即跳到动画最后
+    })
+    $('#btn2').click(function (){
+        t.stop(true,true)
+    })
+    $('#btn3').click(function (){
+        t.stop(false,true)
+    })
+    $('#btn4').click(function (){
+        t.stop(true,false)
+    })
+    $('#btn5').click(function (){
+        t.stop()
+    })
+
+
+</script>
+<!--淡入淡出轮播-->
+<script>
+    var noeindex = 1;
+    $('.next').click(function (){
+        noeindex++
+        if(noeindex>4){
+            noeindex = 1
+        }
+        changeSlide(noeindex)
+    })
+    $('.prev').click(function (){
+        noeindex--
+        if(noeindex<1){
+            noeindex=4
+        }
+        changeSlide(noeindex)
+    })
+    $('.lbcricle span').click(function (){
+        noeindex = $(this).index()+1
+        changeSlide(noeindex)
+    })
+
+    function changeSlide(index){
+        index = index -1
+        $('.lbwrap .slide').fadeOut();
+        $('.lbwrap .slide').eq(index).fadeIn()
+
+        $('.lbcricle span').eq(index).addClass('active').siblings().removeClass('active')
+    }
+    changeSlide(1)
+
+</script>
+<!--    animate动画-->
+<script>
+    $('#an1').click(function (){
+        $('#an4').animate({width:600})
+    })
+    $('#an2').click(function (){
+        $('#an4').animate({width:200,height:200,borderWidth:5})
+    })
+    $('#an3').click(function (){
+        $('#an4').animate({width:600}).animate({height: 400})
+    })
+</script>
+<!--animate动画最小化-->
+<script>
+    var zhankai = 1;//1展开 2收缩
+    $('.pic').click(function (){
+        if(zhankai == 1){
+            $('#ani1').animate({
+                height:40
+            }).animate({width:40},function (){
+                zhankai = 2
+                $('.pic').attr('src','../images/dota_jia.png')
+            })
+        }else if(zhankai == 2){
+            $('#ani1').animate({width:228}).animate({
+                height:405
+            },function (){
+                zhankai = 1
+                $('.pic').attr('src','../images/dota_jian.png')
+            })
+        }
+    })
+</script>
+<!--    多个元素同时动画-->
+<script>
+    $('#anim1 img').mouseenter(function (){
+        var nowINdex = $(this).index()
+        console.log(nowINdex)
+        $("#anim1 img:lt("+(nowINdex+1)+')').each(function (i){
+            $(this).stop().animate({'left':85*i})
+        })
+        $('#anim1 img:gt('+nowINdex+')').each(function (i){
+            $(this).stop().animate({
+                'left':560+85*(i+nowINdex)
+            })
+        })
+    })
+    $("#anim1").mouseleave(function (){
+        $('#anim1 img').each(function (i){
+            $(this).animate({
+                'left':180*i
+            })
+        })
+    })
+</script>
+<!--延时 delay-->
+<script>
+    $('#aa1').delay(2000).animate({
+        'width':300
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

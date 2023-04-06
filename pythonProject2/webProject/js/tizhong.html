@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.container{
+			width:600px;
+			padding:30px 20px;
+			margin:20px auto;
+			border: 1px solid #000;
+		}
+		.container span{
+			display: inline-block;
+			width:200px;
+			height: 30px;
+			text-align: right;
+		}
+		.container .res{
+			text-align: left;
+		}
+		.container input{
+			width:300px;
+			height: 30px;
+		}
+		#btn{
+			width:100px;
+			height: 40px;
+			border:none;
+			background-color: orange;
+			color:#fff;
+			font-size:24px;
+			display: block;
+			margin: 10px auto;
+			cursor: pointer;
+		}
+		.data{
+			margin-top:20px;
+			border-top:1px solid #000;
+			padding-top:10px;
+		}
+		#result{
+			height: 30px;
+			background-repeat: no-repeat;
+			background-size: 30px 30px;
+			padding-left: 35px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p>
+			<span>体重：</span>
+			<input type="text" placeholder="请输入体重，单位kg" id="tz" >
+		</p>
+		<p>
+			<span>身高：</span>
+			<input type="text" placeholder="请输入身高，单位m" id="ht">
+		</p>
+		<p>
+			<button id="btn">计算</button>
+		</p>
+		<div class="data">
+			<span class="res">计算结果：</span>
+			<p id="result"></p>
+		</div>
+	</div>
+</body>
+<script>
+    // 获取按钮，身高，体重标签
+var btn = document.getElementById('btn')
+var ht = document.getElementById('ht')
+var tz = document.getElementById('tz')
+
+//绑定点击事件
+btn.onclick = function(){
+	//获取用户输入的身高和体重
+	var user_height = ht.value
+	var user_weight = tz.value
+	var str = ''
+
+	var result = document.getElementById('result')
+
+	// 体质指数（BMI）= 体重（kg）÷ 身高^2（m）
+	// 计算体质指数
+	var BMI = user_weight / (user_height*user_height)
+
+	// 判断体质指数在哪个区间  <18.5 偏瘦 18.5——23.9 正常 >23.9 偏胖
+	if(BMI<18.5){
+		str = '偏瘦'
+		// 操作样式
+		result.style.backgroundImage = str
+	}else if(BMI>=18.5&&BMI<=23.9){
+		str = '正常'
+		result.style.backgroundImage = str
+	}else{
+		str = '偏胖'
+		result.style.backgroundImage = str
+	}
+	// 把str的值设置到 id为result的p标签中
+	result.innerHTML = str
+}
+</script>
+</html>
+

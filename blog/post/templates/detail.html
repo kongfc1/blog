@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load myfilter %}
+{% load cache %}
+
+{% block title %}
+    详情页面
+{% endblock %}
+
+{% block left %}
+     <div id="main">
+
+            <article class="article article-type-post">
+            <div class="article-meta">
+                <a class="article-date">
+                    <time>{{ post.created|date:'Y-m-d H:i:s' }}</time>
+                </a>
+                <div class="article-category">
+                    {% cache 10000 kongfc %}
+                    <a class="article-category-link" href="#" >{{ post.category.cname }}</a>
+                    {% endcache %}
+                </div>
+            </div>
+            <div class="article-inner">
+                <header class="article-header">
+                    <h1 itemprop="name">
+                        <a class="article-title" href="#" target="_blank">{{ post.title }}</a>
+                    </h1>
+                </header>
+                <div class="article-entry" itemprop="articleBody">
+                    <h2>前言</h2>
+                    <hr>
+                    {{ post.desc }}
+                    <hr>
+                    <p class="article-more-link">
+                        {{ post.content|md|safe }}
+                    </p>
+                </div>
+                <footer class="article-footer">
+                    <a data-url="存放文章的url" class="article-share-link">分享</a>
+                    <ul class="article-tag-list">
+                        {% for t in post.tag.all %}
+                            <li class="article-tag-list-item">
+                                <a class="article-tag-list-link" href="#">{{ t.tname }}</a>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </footer>
+            </div>
+        </article>
+    </div>
+{% endblock %}

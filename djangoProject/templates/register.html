@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <style>
+        p{
+            text-align: center;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        function getAjzx(){
+            $.get('/student/get/','uname=zhangsan&pwd=123',function (result){
+                alert(result.flag)
+            })
+        }
+        function getAjzx1(){
+            var token = $('input[name="csrfmiddlewaretoken"]').val()
+            {#post请求#}
+            $.get('/student/get/','uname=zhangsan&pwd=123&csrfmiddlewaretoken='+token,function (result){
+                alert(result.flag)
+            })
+        }
+        function getAjzx2(){ {# 自定义 ajax #}
+            $.ajax({
+                async:false,
+                url:'student/get/',
+                type:'GET',
+                date:{'uname':'lishi'},
+                success:function (result){
+                    alert(result,flag)
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="get请求" onclick="getAjzx()"></input>
+    <form action="/student/register" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="yhm">用户名：</label><input type="text" name="uname" id="yhm">
+        </p>
+        <p>
+            <label for="mm">密&emsp;码：</label><input type="password" name="pwd" id="mm">
+        </p>
+        <p>
+            &emsp;&emsp;&emsp;&emsp;<input type="submit" value="注册">
+        </p>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

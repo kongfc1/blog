@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动事件,jquery选择器</title>
+    <style>
+        body{
+            height: 2000px;
+            width: 4000px;
+        }
+        #box{
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000000;
+            overflow: scroll;
+        }
+    </style>
+    <script src="./jquery-1.12.3.min.js"></script>
+</head>
+
+<body>
+    <div id="jq">
+        <ul class="list">
+            <li><a href=""><span>1</span></a></li>
+            <li><a href=""><span>2</span></a></li>
+            <li><a href=""><span>3</span></a></li>
+            <li><a href=""><span>4</span></a></li>
+        </ul>
+        <ul class="list">
+            <li><a href=""><span>5</span></a></li>
+            <li><a href=""><span>6</span></a></li>
+            <li><a href=""><span>7</span></a></li>
+            <li><a href=""><span>8</span></a></li>
+        </ul>
+    </div>
+
+    <input type="radio" name="sex" value="1"> nan
+    <input type="radio" name="sex" value="2"> nv
+    <button id="btn">提交</button>
+
+    <div>div内容</div>
+    <input type="text" value="input标签的值">
+
+
+    <br>
+    body
+    <div id="box">
+        我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；
+        我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；
+        我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；
+        我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；我是天才；
+    </div>
+</body>
+
+<script>
+    //绑定事件
+    //DOM的增删改查
+    $("<li><a href=\"\"><span>5</span></a></li>").appendTo('ul');
+    // $('ul').empty() //删除
+    // $("ul").remove()//移除
+    var list = $('#list');
+    console.log(list.parent().parent().parent())
+    console.log(list.parent())
+    console.log(list.children('div'))
+    console.log(list.find('a'))
+
+
+
+    //获取内容
+    console.log($("div:eq(1)").html())
+    console.log($("input:eq(2)").val())
+    //设置内容
+    $("div:eq(1)").html('xinzhi')
+    $("input:eq(2)").val('input xindezhi')
+    //设置属性
+    $("div:eq(1)").attr('id','qqq').attr('class','content')
+    //获取属性
+    console.log($("div:eq(1)").attr('id'))
+    //获取样式
+    console.log($("div:eq(1)").css('fontSize'))
+    //设置样式
+    $("div:eq(1)").css('color','red').css('fontSize','30px');
+    $("div:eq(1)").css({
+        'border':'1px solid #000',
+        'background-color':'skyblue',
+        'margin':'10px auto',
+        'width':'1000px'
+    })
+    //添加类名
+    $("div:eq(1)").addClass('www')
+    //移除类名
+    $("div:eq(1)").remove('www')
+    //切换类名
+    $("#btn").click(function (){
+        $("div:eq(1)").addClass('haha').css('background-color','white')
+        $("div:eq(1)").toggleClass('haha')
+    })
+
+
+    $("#btn").click(function (){
+        console.log($(":radio:checked").val());
+    })
+
+    var jq = $("#jq");
+    console.log(jq);
+    var list = $(".list");
+    console.log(list);
+    var alli = $("li");
+    console.log(alli);
+    var ff = $(".list").eq(0)
+    console.log(ff)
+    var first = $(".list:eq(0)>li");//子级选择器
+    console.log(first);
+    var ff1 = $(".list:eq(1) span")
+    console.log(ff1);
+
+    //jquery封装的选择器
+    // :even 偶数下标,奇数行
+    var first = $("li:even").css("background-color","#B2E0FF");;//子级选择器
+    console.log(first)
+    // :odd  奇数下标，偶数行
+    // :lt(index) 小于多少
+    // :gt(index) 大于多少
+    // :eq(index) 兄弟排名中的第几个
+
+
+    window.onscroll = function (){
+        // box.style.overflow = "scroll";//有bug
+        // document.body
+        // var sTop = document.documentElement.scrollTop || document.body.scrollTop;
+        // var sLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        // console.log('滚动高度：'+sTop)
+        // console.log('滚动距左边距离'+sLeft)
+        // document.documentElement.scrollLeft = '1000px'
+    }
+     var box = document.getElementById('box');
+    box.onscroll = function (){
+         console.log(box.scrollTop)
+    }
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

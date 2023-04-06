@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件、</title>
+    <style>
+        #list{
+            border: 2px solid #000000;
+        }
+        #cha_more{
+            border: 2px solid #3F89EC;
+        }
+        .more{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul id="list">
+            <li>
+                <span>python全栈开发</span>
+                <span class="cha_more">更多</span>
+                <div class="more">
+                    <p>技能要求：无</p>
+                    <p>工作经验：5年</p>
+                    <p>工作地址：北京</p>
+                    <p>薪资：1k</p>
+                </div>
+            </li>
+            <li>
+                <span>python全栈开发</span>
+                <span class="cha_more">更多</span>
+                <div class="more">
+                    <p>技能要求：无</p>
+                    <p>工作经验：5年</p>
+                    <p>工作地址：北京</p>
+                    <p>薪资：1k</p>
+                </div>
+            </li>
+            <li>
+                <span>python全栈开发</span>
+                <span class="cha_more">更多</span>
+                <div class="more">
+                    <p>技能要求：无</p>
+                    <p>工作经验：5年</p>
+                    <p>工作地址：北京</p>
+                    <a href="http://baidu.com">百度</a>
+                    <p>薪资：1k</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="maopao">
+        内容
+        <button id="btn">提交</button>
+    </div>
+
+    <script>
+        var list = document.getElementById('list');
+        var cha = document.getElementsByClassName('cha_more')
+        var more = document.getElementsByClassName('more')
+
+        // cha.onmouseover = function (){
+        //     more.style.display = 'block';
+        //     alert('鼠标来了')
+        // }
+        // cha.onmouseout = function (){
+        //     more.style.display = 'none'
+        //     alert('鼠标走了')
+        // }
+
+        for(let i=0 ; i< more.length ; i++){
+            var k;
+            cha[i].onmouseenter = function (){
+                more[i].style.display = 'block'
+            }
+            cha[i].onmouseleave = function (){
+                k = setTimeout(function (){
+                    more[i].style.display = 'none';
+                },5000);
+            }
+            more[i].onmouseenter = function (){
+                more[i].style.display = 'block';
+                console.log('进入111');
+                clearTimeout(k);
+            }
+            more[i].onmouseleave = function (){
+                k = setTimeout(function (){
+                    more[i].style.display = 'none';
+                },5000);
+                console.log('离开111');
+            }
+
+        }
+        //元素嵌套法，cha_more改成div more嵌套到cha_more
+
+
+
+
+
+        var btn = document.getElementById('btn');
+        var mp = document.getElementById('maopao');
+
+        btn.onclick = function (){
+            console.log('点击事件');
+        }
+        btn.ondblclick = function (){
+            console.log('双击事件');
+        }
+        btn.onmouseover = function (){
+            console.log('经过事件');//向上冒泡
+        }
+        mp.onmouseover = function (){
+            console.log('经过事件-父')
+        }
+        btn.onmouseenter = function (){
+            console.log('进入事件');//不会事件冒泡
+        }
+        btn.onmouseout = function (){
+            console.log('离开事件1')//会事件冒泡
+        }
+        btn.onmouseleave = function (){
+            console.log('离开事件2') //不会事件冒泡
+        }
+        btn.onmousemove = function (){
+            console.log('鼠标移动事件')
+        }
+        btn.onmousedown = function (){
+            console.log('按下事件')
+        }
+        btn.onmouseup = function (){
+            console.log('抬起事件')
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

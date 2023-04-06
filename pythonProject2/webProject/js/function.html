@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+    <div>
+        <select name="year" id="year">
+            <option value="">请选择</option>
+        </select>
+    </div>
+<script>
+    for(let i=1990;i<=2023;i++){
+        $('<option value='+i+'>'+i+'</option>').appendTo('#year')
+    }
+    function test(x,y){
+        console.log(x,y);
+        console.log(arguments[0]);
+    }
+    var test1 = function (){
+        console.log('hahahah')
+    }
+    test(1,2);
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

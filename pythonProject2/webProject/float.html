@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kongfc</title>
+    <style>
+        div{
+            padding: 20px;
+            border: 2px dashed #000;
+            margin-bottom: 10px;
+            margin-right: 20px;
+            float: left;
+        }
+        .second{
+            padding:10px;
+            float: left;
+            width: 30px;
+        }
+        .wh1{
+            float: right;
+        }
+        .wh{
+            height: 300px;
+            width: 300px;
+            background-color: red;
+            /*!*overflow: hidden;*!没效果*/
+        }
+        .four{
+            float: right;
+        }
+        .four_parent{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+  <div class="wh">
+    <div class="first">one</div>
+    <div class="second">two</div>
+    <div class="three">three</div>
+  </div>
+  <div class="wh1">
+      <div class="four_parent">
+          <div class="four">four</div>
+          <div class="four">six</div>
+      </div>
+      <p style="clear: left">浮动</p>
+      <div class="five">five</div>
+  </div>
+
+
+<!--任何一个标签都是一个盒模型，每个盒模型都有四个方向，是个矩形-->
+<!--组成部分：-->
+<!--   content:内部部分，经常设置宽高（块级、行内-块级元素有效，行内元素无效）-->
+<!--   padding：内边距，内容部分和边框直接的举例-->
+<!--   border: 边框-->
+<!--   margin: 外边距，撑开不同盒模型直接的距离-->
+<!--padding/border/margin都有四个方向可以设置-->
+<!--top bottom left right-->
+<!--设置方式：1、有四个值：上右下左四个方向的值 padding： 10px 20px 30px 40px-->
+<!--         2、设三个值：上10 下30 左右20 padding: 10px 20px 30px-->
+<!--         3  设两个值：上下10 左右20 padding:10px 20px-->
+<!--         4，设一个值：padding:10px-->
+<!--margin:10px auto; 让元素在页面中水平方向上居中显示-->
+<!--border组成 -->
+<!--   宽度 ： border-width-->
+<!--   样式：border-style:solid(实线) dotted（点线） dashed（虚线）-->
+<!--   颜色：red / #000 / rgb() /rgba()-->
+<!--   简写形式：border:1px solid #000-->
+<!--字体：-->
+<!--   font-family:设置使用字体-->
+<!--   font-size:16px-->
+<!--   font-weight:100/200/400/bold-->
+<!--背景-->
+<!--   backgroup:设置背景的复合属性-->
+<!--   分开的属性又：-->
+<!--     backgroup-color:背景颜色-->
+<!--     backgroup-image:背景图片-->
+<!--     backgroup-size:背景大小-->
+<!--     backgroup-position:背景定位-->
+<!--     backgroup-repeat:背景是否重复-->
+<!--text-algin:left/right/center-->
+<!--line-height:行高-->
+<!--vertical-align:top、middle/bottom  垂直方向上对齐方式-->
+<!--overflow:hidden 溢出隐藏-->
+
+<!--选择器：-->
+<!--  id选择器：id要具有唯一性，#id-->
+<!--  类选择器：class，不具备唯一性，可以存在多个， .class名-->
+<!--  元素选择器:标签 通过 标签名 设置样式-->
+<!--  子集选择器：父级>子集-->
+<!--  后代选择器：父级 后代-->
+<!--  伪类选择器：元素：before/:after 当前元素后添加的伪类-->
+<!--             元素：nth-child(n) 查找当前元素的兄弟元素-->
+<!--            元素：nth-of-type(n) 查找当前元素的兄弟元素-->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

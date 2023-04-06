@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+	var data = {
+		nextpage: 2,
+		goodlist: [
+			[
+				{
+					goods_id: "2597",
+					title: "哈巴雪山登山 独家两次冲顶 挑战5396人生的第一座高峰（4日行程）",
+					price: 3580,
+					start_place: "丽江",
+					start_nation: "1",
+					start_province: "29",
+					start_city: "363",
+					default_image: "http://img.qunawan.com/ecmme/wan/xl/goods/20170918/201709181456102387_listfull.jpg!list2016325",
+					last_start_time: "1531296000",
+					allowance: "10",
+					store_id_n: "242",
+					url_pc: "http://hd.8264.com/xianlu-2597",
+					url_wap: "http://m.hd.8264.com/xianlu-2597",
+					goods_spec: {
+						M: "Jul",
+						m: "07",
+						d: "12"
+					}
+				},
+				{
+					goods_id: "160767",
+					title: "喀纳斯 禾木瑞士风光 吐鲁番维吾尔民族风情 沙漠风光（10日行程）",
+					price: 7200,
+					start_place: "乌鲁木齐",
+					start_nation: "1",
+					start_province: "28",
+					start_city: "344",
+					default_image: "http://img.qunawan.com/ecmme/wan/xl/goods/20170711/201707111154228375_listfull.jpg!list2016325",
+					last_start_time: "1532073600",
+					allowance: "0",
+					store_id_n: "9615",
+					url_pc: "http://hd.8264.com/xianlu-160767",
+					url_wap: "http://m.hd.8264.com/xianlu-160767",
+					goods_spec: {
+						M: "Jul",
+						m: "07",
+						d: "25"
+					}
+				},
+				{
+					goods_id: "161339",
+					title: "2018环北疆喀纳斯伊犁巴音布鲁克天池 吐鲁番沙漠行色之旅（12日行程）",
+					price: 4980,
+					start_place: "乌鲁木齐",
+					start_nation: "1",
+					start_province: "28",
+					start_city: "344",
+					default_image: "http://img.qunawan.com/ecmme/wan/xl/goods/20170706/201707060927144636_listfull.jpg!list2016325",
+					last_start_time: "1531468800",
+					allowance: "10",
+					store_id_n: "11054",
+					url_pc: "http://hd.8264.com/xianlu-161339",
+					url_wap: "http://m.hd.8264.com/xianlu-161339",
+					goods_spec: {
+						M: "Jul",
+						m: "07",
+						d: "19"
+					}
+				}
+			]
+		]
+	}
+
+	//遍历实现把字典变成字符串
+	for(var i in data.goodlist[0]){
+		data.goodlist[0][i].start_time = data.goodlist[0][i]['goods_spec'].m+'/'+data.goodlist[0][i]['goods_spec'].d
+		console.log(data.goodlist[0][i].start_time)
+	}
+	 console.log(data)
+
+
+	//作业2：使用函数封装 查询指定cookie值的 功能， 三个函数，三种思路
+	var str = "BAIDUID=6848B473EF50AE27A9B71CABEFCA49B2:FG=1; BIDUPSID=6848B473EF50AE27A9B71CABEFCA49B2; PSTM=1520569296; BD_UPN=12314353; MCITY=-%3A; BDORZ=FFFB88E999055A3F8A630C64834BD6D0; FP_UID=d725dde8a25ece7393c40192702ca6ef; BD_HOME=0; ORIGIN=2; BDRCVFR[uZj3G_6bTl0]=mk3SLVN4HKm; BD_CK_SAM=1; PSINO=1; pgv_pvi=2502878208; pgv_si=s6538584064; H_PS_PSSID=26748_1436_26432_21080_26350_22158"
+	//字符串找下标
+	function strfn(keyname){
+		var tempindex = str.indexOf(keyname);
+		var firstindex = tempindex+ keyname.length + 1
+		var secondindex = str.indexOf(';',firstindex)
+		var keyval = str.slice(firstindex,secondindex);
+		return keyval
+	}
+
+	console.log(strfn('H_PS_PSSID'))
+
+	//列表方案
+	function listfn(keyname){
+		var arr = str.split(';')
+		for(var i in arr){
+			var arr2 = arr[i].split('=')
+			if(arr2[0].trim() == keyname.trim()){
+				return arr2[1]
+			}
+		}
+	}
+
+	console.log(listfn('BDORZ'))
+
+
+	//字典方案
+	function dictfn(keyname){
+		var arr = str.split(';')
+		//定义一个空字典
+		var dict = {}
+		for(var i in arr){
+			var arr2 = arr[i].split('=')
+			dict[arr2[0].trim()] = arr2[1]
+		}
+		return dict[keyname]
+	}
+	console.log(dictfn('BAIDUID'))
+</script>
+</html>

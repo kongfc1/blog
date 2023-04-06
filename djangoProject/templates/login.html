@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+
+<form action="/student/login" method="post">
+    {% csrf_token %}
+    <p>
+        <label>用户名：</label><input type="text" placeholder="请输入用户名" name="uname">
+    </p>
+    <p>
+        <label>密&emsp;码：</label><input type="password" placeholder="请输入密码" name="pwd">
+    </p>
+    <p>
+        &emsp;&emsp;&emsp;&emsp;<input type="submit" value="登录">
+    </p>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

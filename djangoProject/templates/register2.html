@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单类2</title>
+    <style>
+        .error-msg{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<form action="/student2/fregister" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="{{ stuForm.sname.id_for_label }}">{{ stuForm.sname.label }}</label>&emsp;{{ stuForm.sname }}
+    </p>
+    <p>
+        <label for="{{ clsForm.cname.id_for_label }}">{{ clsForm.cname.label }}</label>&emsp;{{ clsForm.cname }}
+    </p>
+    <p>
+        <label for="{{ stuForm.password.id_for_label }}">{{ stuForm.password.label }}</label>&emsp;{{ stuForm.password }}
+    </p>
+    <p>
+        <label for="{{ stuForm.password2.id_for_label }}">{{ stuForm.password2.label }}</label>&emsp;{{ stuForm.password2 }} <span class="error-msg">{{ stuForm.errors.password2.0 }}</span>
+    </p>
+    <input type="submit" value="注册">
+</form>
+</body>
+</html>

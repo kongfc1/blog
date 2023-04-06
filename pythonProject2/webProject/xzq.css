@@ -1,0 +1,33 @@
+.new{
+    margin-left: 50px;
+}
+.new #list{
+    list-style: none;
+}
+.new #list li{
+   border-bottom: 5px solid #ccc;
+    position: relative;
+}
+li>div{
+    display: inline-block;
+    color: blue;
+}
+li h3{
+    color: orange;
+}
+*{
+    margin:0;
+    padding: 0;
+}
+li>div:before{
+    content:'';
+    width:30px;
+    height:30px;
+    background:url("./1.jpg");
+    position: absolute;
+    top: 0;
+    right: 50px;
+}
+#list li p:nth-child(3){
+    color: green;
+}

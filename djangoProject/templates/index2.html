@@ -1,0 +1,47 @@
+{% load filter_match %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局上下文</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    {{ uname }}
+<ul>
+    <li>
+        {% for m in menu %}
+            <a href="#">{{ m.mname }}</a>
+        {% endfor %}
+    </li>
+</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

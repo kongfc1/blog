@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			font-size:20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="one" style="color: red" >div容器</div>
+	<div id='box' class="content box2 box3" style='color:red'>div标签</div>
+	<a href="www.baidu.com">跳转到xx</a>
+	<img src="../images/banner1.jpg" alt="">
+</body>
+<script>
+	var one = document.getElementById('one')
+	console.log(one.style.color) //获取行内样式
+	console.log(window.getComputedStyle(one)['fontSize'])
+	//获取属性值
+	var box = document.getElementById('box')
+	console.log(box.getAttribute('class'),box.getAttribute('id'))
+
+	var Alla = document.getElementsByTagName('a')
+	console.log(Alla[0].getAttribute('href'))
+
+	var Allimg = document.getElementsByTagName('img')
+	console.log(Allimg[0].getAttribute('src'))
+
+	// 设置属性值
+	Allimg[0].setAttribute('src','../images/banner2.jpg')
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+

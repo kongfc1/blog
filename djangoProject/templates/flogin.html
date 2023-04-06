@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单类</title>
+</head>
+<body>
+<form action="/student2/flogin" method="post">
+    {% csrf_token%}
+{#    {{ loginForm }}#}
+    {{ loginForm.as_p }}
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

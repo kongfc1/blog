@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串操作</title>
+</head>
+<body>
+  <script>
+      var str = 'hello world ; hello everyone kongfc ; ';
+      console.log(str.length);
+      console.log(str.indexOf(';'));
+      var newstr = str.slice(0,11);
+      console.log(newstr);
+      var newlist = str.split(';');
+      for(var i=0;i<newlist.length;i++){
+          console.log(newlist[i].trim()+'    天才')
+      }
+      console.log(newlist[1].toString());
+      var newlist = str.replace(/hello/g,'nihao');
+      console.log(newlist);
+      console.log(str);
+
+      console.log(str.match(/hello/g))
+      console.log(str.toUpperCase())
+      console.log(str.toLowerCase());
+
+      var i = str.indexOf('everyone')
+      var f = i+'everyone'.length
+      console.log(i+'  '+f)
+      console.log(str.indexOf(';',f));
+
+
+      //数组对象
+      var arr = ['a','b','c',1,3,'hello'];
+
+      console.log(arr.length);
+      var newarr = arr.unshift('元素'); //头部添加
+      console.log(arr);
+      var newarr = arr.push('后');//尾部添加
+      console.log(arr);
+      var newarr = arr.shift();//头部删除
+      console.log(arr);
+      var newarr = arr.pop();//尾部删除
+      console.log(arr);
+      var newarr = arr.splice(3,2,4,5);
+      console.log(arr.toString());
+      for (i in arr){
+          console.log(arr[i])
+      }
+
+      var newstr = arr.join('***');
+      console.log(newstr)
+      console.log(arr);
+
+      var obj ={
+          name:'孙子兵法',
+          author:'孙武',
+          nation:'吴',
+          age:36,
+          sg:177.7,
+          books:[{shouxia1:'孙膑',shouxia2:'孙某某'}]
+      };
+      console.log(obj.name);
+      console.log(obj.books[0].shouxia2);
+
+      for (i in obj){
+          console.log(i)
+      }
+
+
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

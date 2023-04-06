@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math\Date定时器</title>
+</head>
+<body>
+<!--Math.floor() 向下取整-->
+<!--Math.ceil() 向上取整-->
+<!--Math.round() 四舍五入-->
+<!--Math.max() 最大值，可接受多个参数，然后判断最大值-->
+<!--Math.min() 最小值，可接受多个参数，然后判断最小值-->
+<!--Math.PI() Π，没参数-->
+<div class="box" style="width: 100px;height: 100px;">
+    <p style="padding: 20px">自动生成颜色</p>
+</div>
+<button id="btn" style="width: 100px;height: 20px;">
+    停止定时器
+</button>
+
+<div id="dom1">
+    <span id="old">原来的标签</span>
+</div>
+<div id="dom2">
+    <span id="old2">原来的标签2</span>
+</div>
+
+<script>
+
+	 // 查询第一个子节点：元素.firstChild
+	 // 查询最后一个子节点：元素.lastChild
+	 // 查询当前元素的下一个节点：元素.nextSibling
+	 // 查询当前元素的上一个节点：元素.previousSibling
+	 // 查询当前元素的父节点：元素.parentNode
+	 // 查询所有子级节点：元素.children
+	 // 查询当前元素是否有子节点：元素.hasChildNodes()
+     var hah = document.getElementById('dom1');
+     console.log(hah.firstChild);
+/////////////////////////////////////////////////////////////
+    var str = "<p id='newp' class='dom2' style='color:blue'>新添加的p标签</p>"
+    var dom2 = document.getElementById('dom2');
+    dom2.innerHTML = str;
+    // dom2.removeChild(str)  删除节点 str不是node 所以报错
+    // dom2.replaceChild('新节点','旧节点')  替换
+////////////////////////////////////////////////////////////////////////////////
+    var objp = document.createElement('p');
+    var objp_con = document.createTextNode('新标签p的内容');
+    objp.appendChild(objp_con);
+    var dom1 = document.getElementById('dom1');
+    // dom1.appendChild(objp);//以下两行可代替
+    var old = document.getElementById('old');
+    dom1.insertBefore(objp,old)
+
+    var odiv = document.createElement('div');
+    odiv.id = 'container';
+    odiv.className = 'slide';
+    odiv.style.height='100px';
+    odiv.style.width='100px';
+    odiv.style.background='red';
+    odiv.innerHTML='创建div';
+    dom1.appendChild(odiv);
+////////////////////////////////////////////////////////////////////////////////
+
+    var date1 = new Date();
+    console.log(date1);//天数
+    console.log(date1.getFullYear()+'/'+(parseInt(date1.getMonth())+1)+'/'+date1.getDate()+' '
+        +date1.getHours()+':'+date1.getMinutes()+':'+date1.getSeconds()+'  星期'+date1.getDay());
+
+    var yanshidsq = setTimeout(function (){
+        console.log('哈哈')
+    },3000)
+
+    var jiangedsq = setInterval(function (){
+        console.log(date1)
+    },1000)
+    var btn = document.getElementById('btn');
+    btn.onclick = function (){
+        clearInterval(jiangedsq);
+    }
+
+    var time1 = new Date().getTime();
+    console.log(time1)
+    console.log(Math.floor(time1/(1000*60*60))); //shi
+    console.log(Math.floor(time1/(1000*60)%60)); //fen
+    console.log(Math.floor(time1/1000%60%60))    //miao
+
+//////////////////////////////////////////////////////////////////////////
+
+    function randomnum(m,n){
+        return Math.floor(m+Math.random()*(n-m+1));
+    }
+    function randomColor(){
+        return 'rgb('+randomnum(0,255)+','+randomnum(0,255)+','+randomnum(0,255)+')'
+    }
+    console.log(randomColor())
+    var box = document.getElementsByClassName('box')[0];
+    box.style.background = randomColor();
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
