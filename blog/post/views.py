@@ -11,6 +11,7 @@ from post.models import Post
 @cache_page(60*1) #views层级缓存
 def queryAll(request,num=1):  #渲染主页面
     # num = request.GET.get('num',1)
+    print(num)
     num = int(num)
     postlist = Post.objects.all().order_by('created')
     #创建分页器对象
@@ -31,8 +32,6 @@ def queryAll(request,num=1):  #渲染主页面
     else:
         begin = end - 9
     pagelist = range(begin,end+1)
-
-
     return render(request,'index.html',{'postlist':perPageList,'pagelist':pagelist,'num':num})
 
 
